@@ -43,3 +43,7 @@
             </div>
         </div>
     </div>
+
+    <!-- <script>
+        alert('Selamat datang di toko kami');
+    </script> -->

@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/cssku.css'); ?>">
     <script src="<?= base_url('assets/js/bootstrap.min.js'); ?>"></script>
+
+    <script src="<?= base_url('assets/js/jquery.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/jquery.dataTables.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/sweetalert2.all.min.js') ?>"></script>
+
 </head>
 
 <body>
@@ -20,7 +25,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ml-auto ">
                     <a class="nav-link" href="<?= base_url('/'); ?>">Home</a>
-                    <a class="nav-link" href="#produk">Product</a>
+                    <a class="nav-link" href="<?= base_url('jamu/product'); ?>">Product</a>
                     <a class="nav-link" href="<?= base_url('jamu/about'); ?>">About</a>
                 </div>
             </div>

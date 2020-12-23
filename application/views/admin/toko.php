@@ -1,5 +1,6 @@
 <div class="container">
-    <a class="btn text-white" style="margin-top: 65px; background-color: #3ee228;" href="<?= base_url('jamu/tambahJamu') ?>">Tambah</a>
+    <a class="btn text-white" style="margin-top: 65px; background-color: #3ee228;" href="<?= base_url('toko/tambahToko') ?>">Tambah</a>
+    <?php echo $this->session->flashdata('pesan') ?>
     <table class="table mt-3" id="table-data">
         <thead class="thead-dark">
             <tr>
@@ -17,7 +18,7 @@
     $(document).ready(function() {
         $.ajax({
             type: "GET",
-            url: "<?php echo base_url() ?>toko/jsonGetAllData",
+            url: "<?php echo base_url() ?>toko/GetAllData",
             async: true,
             dataType: 'json',
             success: function(data) {
@@ -30,8 +31,8 @@
                 <td>${data.toko[i].lokasi}</td>
                 <td>${data.toko[i].jam_kerja}</td>
                 <td>
-                <a href="<?= base_url() ?>jamu/editToko/${data.toko[i].id}" class="badge badge-success">Edit</a> |
-                        <a href="<?= base_url() ?>jamu/hapusToko/${data.toko[i].id}" class="badge badge-danger" onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</a>
+                    <a href="<?= base_url() ?>toko/editToko/${data.toko[i].id}" class="badge badge-success">Edit</a> |
+                    <a href="<?= base_url() ?>toko/hapusToko/${data.toko[i].id}" class="badge badge-danger remove" >Delete</a>
                 </td>
               </tr>
             `

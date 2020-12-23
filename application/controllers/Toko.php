@@ -19,6 +19,13 @@ class Toko extends CI_Controller
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/user_guide/general/urls.html
      */
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->library("form_validation");
+        $this->load->library("session");
+    }
+
     public function index()
     {
         $this->load->model('model_toko', 'tk');
@@ -27,15 +34,6 @@ class Toko extends CI_Controller
         $this->load->view('toko/index', $data);
         $this->load->view('footer');
     }
-    // public function produk($id)
-    // {
-    //     $where = array('id' => $id);
-    //     $this->load->model('model_jamu', 'jm');
-    //     $data['data'] = $this->jm->get_id($where, 'jamu')->result_array();
-    //     $this->load->view('header');
-    //     $this->load->view('produk', $data);
-    //     $this->load->view('footer');
-    // }
     public function admin_toko()
     {
         $this->load->model('model_toko', 'tk');
@@ -45,10 +43,90 @@ class Toko extends CI_Controller
         $this->load->view('footer');
     }
 
-    public function jsonGetAllData()
+    public function GetAllData()
     {
         $this->load->model('Model_toko');
         $data['toko'] = $this->Model_toko->get_data('toko');
         echo json_encode($data);
+    }
+    public function tambahToko()
+    {
+        $this->load->model('Model_toko', 'tk');
+        $data['data'] = $this->tk->get_data();
+        $this->load->view('header');
+        $this->load->view('admin/tambahToko', $data);
+        $this->load->view('footer');
+    }
+    public function tambahDataToko()
+    {
+        if ($this->form_validation->run() == false) {
+            $data = [
+                // 'id' => $this->input->post(''),
+                'nama' => $this->input->post('nama'),
+                'lokasi' => $this->input->post('lokasi'),
+                'alamat' => $this->input->post('alamat'),
+                'jam_kerja' => $this->input->post('jam_kerja'),
+                'gambar' => $this->input->post('gambar')
+            ];
+            $this->db->insert('toko', $data);
+            $this->session->set_flashdata(
+                'pesan',
+                '<script>
+                      Swal.fire({
+                          icon: "success",
+                          title : "Data Toko Berhasil Tersimpan",
+                          type : "success",
+                          showConfirmButton: false,
+                          timer: 1500
+                      })
+                  </script>'
+            );
+
+            redirect('toko/admin_toko');
+        } else {
+            $this->tambahToko();
+        }
+    }
+    public function hapusToko($id)
+    {
+        $this->load->model('Model_Toko', 'tk');
+        $where = array('id' => $id);
+        $this->tk->delete_data($where, "toko");
+        $this->session->set_flashdata(
+            'pesan',
+            '<script>
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won\'t be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire(
+                    "Deleted!",
+                    "Your file has been deleted.",
+                    "success"
+                  )
+                }
+              })
+              </script>'
+        );
+        redirect('toko/admin_toko');
+    }
+
+    public function editToko($id)
+    {
+        $this->load->model('Model_Toko', 'tk');
+        $where = array('id' => $id);
+        $data['toko'] = $this->tk->edit_data($where, 'toko')->result();
+        $data['data'] = $this->db->get('toko')->result_array();
+        // var_dump($data['jamu']);
+        // die;
+        $this->load->view('header');
+        $this->load->view('admin/editToko', $data);
+        $this->load->view('footer');
     }
 }

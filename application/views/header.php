@@ -12,7 +12,24 @@
     <script src="<?= base_url('assets/js/jquery.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/jquery.dataTables.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/sweetalert2.all.min.js') ?>"></script>
-
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/css/bootstrap.css' ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/css/jquery.dataTables.css' ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/css/dataTables.bootstrap4.css' ?>">
+    <style>
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            box-sizing: border-box;
+            display: inline-block;
+            min-width: 1.5em;
+            padding: 1px;
+            margin-left: 2px;
+            text-align: center;
+            text-decoration: none !important;
+            cursor: pointer;
+            color: #333 !important;
+            border: 1px solid transparent;
+            border-radius: 2px;
+        }
+    </style>
 </head>
 
 <body>
@@ -26,6 +43,7 @@
                 <div class="navbar-nav ml-auto ">
                     <a class="nav-link" href="<?= base_url('/'); ?>">Home</a>
                     <a class="nav-link" href="<?= base_url('jamu/product'); ?>">Product</a>
+                    <a class="nav-link" href="<?= base_url('/toko'); ?>">Toko</a>
                     <a class="nav-link" href="<?= base_url('jamu/about'); ?>">About</a>
                 </div>
             </div>

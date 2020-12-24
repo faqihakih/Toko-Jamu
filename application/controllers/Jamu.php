@@ -21,7 +21,7 @@ class Jamu extends CI_Controller
      */
     public function index()
     {
-        $this->load->model('model_jamu', 'jm');
+        $this->load->model('Model_Jamu', 'jm');
         $data['data'] = $this->jm->get_data();
         $this->load->view('header');
         $this->load->view('Jamu', $data);
@@ -30,7 +30,7 @@ class Jamu extends CI_Controller
     public function produk($id)
     {
         $where = array('id' => $id);
-        $this->load->model('model_jamu', 'jm');
+        $this->load->model('Model_Jamu', 'jm');
         $data['data'] = $this->jm->get_id($where, 'jamu')->result_array();
         $this->load->view('header');
         $this->load->view('produk', $data);
@@ -45,7 +45,7 @@ class Jamu extends CI_Controller
 
     public function product()
     {
-        $this->load->model('model_jamu', 'jm');
+        $this->load->model('Model_Jamu', 'jm');
         $data['data'] = $this->jm->get_data();
         $this->load->view('header');
         $this->load->view('admin/jamu', $data);
@@ -54,7 +54,7 @@ class Jamu extends CI_Controller
 
     public function tambahJamu()
     {
-        $this->load->model('model_jamu', 'jm');
+        $this->load->model('Model_Jamu', 'jm');
         $data['data'] = $this->jm->get_data();
         $this->load->view('header');
         $this->load->view('admin/tambahJamu', $data);
@@ -78,7 +78,7 @@ class Jamu extends CI_Controller
 
     public function hapusjamu($id)
     {
-        $this->load->model('Model_jamu', 'jm');
+        $this->load->model('Model_Jamu', 'jm');
         $where = array('id' => $id);
         $this->jm->delete_data($where, "jamu");
         redirect('jamu/product');
@@ -87,7 +87,7 @@ class Jamu extends CI_Controller
     function editJamu($id)
     {
         $where = array('id' => $id);
-        $this->load->model('model_jamu', 'jm');
+        $this->load->model('Model_Jamu', 'jm');
         $data['jamu'] = $this->jm->edit_data($where, 'jamu')->result();
         $data['data'] = $this->db->get('jamu')->result_array();
         // var_dump($data['jamu']);
@@ -99,7 +99,7 @@ class Jamu extends CI_Controller
 
     public function update()
     {
-        $this->load->model('model_jamu', 'jm');
+        $this->load->model('Model_Jamu', 'jm');
         $data = array(
             // 'id' => $this->input->post(''),
             'nama' => $this->input->post('namaJamu'),

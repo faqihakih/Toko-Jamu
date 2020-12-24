@@ -1,6 +1,6 @@
 <?php
 
-class Model_toko extends CI_Model
+class Model_Toko extends CI_Model
 {
     public function get_data()
     {

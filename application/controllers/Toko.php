@@ -28,7 +28,7 @@ class Toko extends CI_Controller
 
     public function index()
     {
-        $this->load->model('model_toko', 'tk');
+        $this->load->model('Model_Toko', 'tk');
         $data['data'] = $this->tk->get_data();
         $this->load->view('header');
         $this->load->view('toko/index', $data);
@@ -36,7 +36,7 @@ class Toko extends CI_Controller
     }
     public function admin_toko()
     {
-        $this->load->model('model_toko', 'tk');
+        $this->load->model('Model_Toko', 'tk');
         $data['data'] = $this->tk->get_data();
         $this->load->view('header');
         $this->load->view('admin/toko', $data);
@@ -45,13 +45,13 @@ class Toko extends CI_Controller
 
     public function GetAllData()
     {
-        $this->load->model('Model_toko');
-        $data['toko'] = $this->Model_toko->get_data('toko');
+        $this->load->model('Model_Toko');
+        $data['toko'] = $this->Model_Toko->get_data('toko');
         echo json_encode($data);
     }
     public function tambahToko()
     {
-        $this->load->model('Model_toko', 'tk');
+        $this->load->model('Model_Toko', 'tk');
         $data['data'] = $this->tk->get_data();
         $this->load->view('header');
         $this->load->view('admin/tambahToko', $data);

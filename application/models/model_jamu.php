@@ -1,6 +1,6 @@
 <?php
 
-class Model_jamu extends CI_Model
+class model_jamu extends CI_Model
 {
   public function get_data()
   {

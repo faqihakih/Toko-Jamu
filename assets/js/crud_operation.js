@@ -15,6 +15,7 @@ $(document).ready(function () {
 			async: false,
 			dataType: 'json',
 			success: function (data) {
+				console.log("KONTOL", data);
 				var html = '';
 				var i;
 				for (i = 0; i < data.length; i++) {
